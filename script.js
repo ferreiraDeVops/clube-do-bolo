@@ -106,20 +106,20 @@ if (reviewSection && reviewSlides.length) {
   startReviews();
 }
 
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const preloader = root.querySelector('.preloader');
-    if (preloader) preloader.classList.add('is-hidden');
-  }, 500);
+// Start without waiting for images or the map.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupGsapAnimations, { once: true });
+} else {
   setupGsapAnimations();
-});
-
+}
+window.addEventListener('load', () => {
+  if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+}, { once: true });
 function setupGsapAnimations() {
   if (!window.gsap) return;
   const { gsap } = window;
   const ScrollTrigger = window.ScrollTrigger;
   if (ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
-  gsap.to('.preloader', { opacity: 0, duration: .5, delay: .2, onComplete: () => root.querySelector('.preloader').remove() });
   gsap.from('.site-header', { y: -24, opacity: 0, duration: .7, delay: .35 });
   gsap.from('.hero-copy > *, .hero-actions', { y: 30, opacity: 0, stagger: .1, delay: .4 });
   gsap.from('.hero-art', { scale: 1.08, opacity: 0, duration: 1.1, delay: .3 });

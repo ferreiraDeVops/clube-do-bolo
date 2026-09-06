@@ -19,6 +19,11 @@
     .quote-dots button.active { background: #fe8301; }
     .site-header { background: #fe8301; border-color: rgba(77, 36, 20, 0.16); }
     .site-header { top: 28px; }
+    .preloader { background: var(--caramel); animation: dismiss-preloader .2s ease .25s forwards; }
+    .loader-line { background: rgba(77, 36, 20, .25); }
+    .loader-line i { animation-duration: .25s; }
+    @keyframes dismiss-preloader { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+    @media (prefers-reduced-motion: reduce) { .preloader { animation-duration: .01s; } }
     .brand { display: flex; align-items: center; height: 60px; padding: 6px 16px; background: #fe8301; border-radius: 12px; overflow: hidden; }
     .brand img { width: 138px; height: 50px; }
     .desktop-nav a, .mobile-nav a { font-size: 18px; font-weight: 700; transition: color .25s ease, transform .25s ease; }
@@ -75,7 +80,15 @@
     .intro-proof span { font-size: 12px; line-height: 1.5; }
     .site-header .header-cta { background: #25d366; border-color: #25d366; color: #fff; }
     .site-header .header-cta:hover { background: #128c7e; border-color: #128c7e; }
-    @media (max-width: 768px) { .site-header { top: 16px; } .brand { height: 52px; padding: 5px 12px; } .brand img { width: 116px; height: 43px; } .mobile-nav a { font-size: 16px; } .hero .eyebrow { font-size: 12px; } .confected-showcase .product-card { flex-basis: 72vw; height: 390px; } }
+    @media (min-width: 769px) {
+      .hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(32px, 5vw, 80px); align-items: center; padding-bottom: 120px; }
+      .hero-backdrop { position: absolute; inset: 0; }
+      .hero-copy { min-width: 0; max-width: 100%; }
+      .hero h1 strong { font-size: clamp(3rem, 6vw, 6.2rem); }
+      .hero .eyebrow { max-width: 100%; line-height: 1.5; }
+      .hero-art { position: relative; top: auto; right: auto; bottom: auto; width: 100%; max-width: 440px; justify-self: end; align-self: center; }
+    }
+    @media (max-width: 768px) { .hero { justify-content: center; align-items: center; } .hero-copy { width: 100%; text-align: center; } .hero h1 { margin-inline: auto; } .hero-art { display: none; } .hero-text { color: #fe8301; margin-inline: auto; padding: 12px 16px; border-left: 0; font-size: clamp(20px, 5vw, 23px); font-weight: 600; line-height: 1.6; background: rgba(31, 14, 7, .72); border-radius: 12px; text-shadow: 0 1px 3px rgba(0, 0, 0, .6); } .site-header { top: 16px; } .brand { height: 52px; padding: 5px 12px; } .brand img { width: 116px; height: 43px; } .mobile-nav a { font-size: 16px; } .hero .eyebrow { font-size: 12px; } .confected-showcase .product-card { flex-basis: 72vw; height: 390px; } }
     @media (min-width: 600px) and (max-width: 768px) { .desktop-nav { display: flex; } .header-cta { display: inline-flex; } .menu-toggle, .mobile-nav { display: none; } }
   </style>
 </head>
@@ -161,6 +174,6 @@
   <footer class="site-footer"><img src="LogoBomBolo.png" alt="Bom bolo"><div><p>Simplificando sua festa,<br><em>elevado o sabor.</em></p><a href="https://www.instagram.com/clubedobolo_oficial/" target="_blank" rel="noopener">Instagram ↗</a></div><div class="footer-meta"><span>61 99882-6916</span><span>Sobradinho · Brasília</span><a href="https://dz7-marketing-site.vercel.app/" target="_blank" rel="noopener">Desenvolvido por Dz7 Marketing</a></div></footer>
   <div class="floating-actions"><a class="fab whatsapp" href="https://wa.me/5561998826916?text=Ol%C3%A1%2C%20Bom%20bolo!" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">◔</a><a class="fab instagram" href="https://www.instagram.com/clubedobolo_oficial/" target="_blank" rel="noopener" aria-label="Abrir Instagram">◎</a></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script><script src="script.js?v=20260906-9"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script><script src="script.js?v=20260906-10"></script>
 </body>
 </html>
