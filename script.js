@@ -44,7 +44,7 @@ categories.forEach((category, categoryIndex) => {
     const figure = document.createElement('figure');
     figure.className = 'product-card';
     const caption = isShowcase ? 'Bom bolo' : category.title;
-    figure.innerHTML = `<img src="${category.folder}/${file}" alt="${category.title} Bom bolo ${index + 1}" loading="lazy"><figcaption>${caption}</figcaption>`;
+    figure.innerHTML = `<img src="optimized/${category.folder}/${file}" alt="${category.title} Bom bolo ${index + 1}" loading="lazy" decoding="async"><figcaption>${caption}</figcaption>`;
     grid.appendChild(figure);
   });
   gallery.appendChild(section);
@@ -70,6 +70,7 @@ const reviewButtons = root.querySelectorAll('.quote-dots button');
 const reviewSlides = root.querySelectorAll('.quote-slide');
 let currentReview = 0;
 let reviewTimer;
+let reviewsVisible = true;
 
 function showReview(index) {
   currentReview = index;
@@ -86,7 +87,7 @@ function stopReviews() {
 
 function startReviews() {
   stopReviews();
-  if (reviewSlides.length < 2 || document.hidden || reviewSection.matches(':hover') || reviewSection.contains(document.activeElement)) return;
+  if (!reviewsVisible || reviewSlides.length < 2 || document.hidden || reviewSection.matches(':hover') || reviewSection.contains(document.activeElement)) return;
   reviewTimer = setInterval(() => showReview((currentReview + 1) % reviewSlides.length), 6000);
 }
 
@@ -106,27 +107,39 @@ if (reviewSection && reviewSlides.length) {
   startReviews();
 }
 
-// Start without waiting for images or the map.
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', setupGsapAnimations, { once: true });
-} else {
-  setupGsapAnimations();
+// Update only the compositor-friendly progress bar, at most once per frame.
+const progressBar = root.querySelector('.scroll-progress');
+let progressPending = false;
+function updateProgress() {
+  const distance = root.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.transform = `scaleX(${distance > 0 ? window.scrollY / distance : 0})`;
+  progressPending = false;
 }
-window.addEventListener('load', () => {
-  if (window.ScrollTrigger) window.ScrollTrigger.refresh();
-}, { once: true });
-function setupGsapAnimations() {
-  if (!window.gsap) return;
-  const { gsap } = window;
-  const ScrollTrigger = window.ScrollTrigger;
-  if (ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
-  gsap.from('.site-header', { y: -24, opacity: 0, duration: .7, delay: .35 });
-  gsap.from('.hero-copy > *, .hero-actions', { y: 30, opacity: 0, stagger: .1, delay: .4 });
-  gsap.from('.hero-art', { scale: 1.08, opacity: 0, duration: 1.1, delay: .3 });
-  if (!ScrollTrigger) return;
-  gsap.to('.scroll-progress', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: document.documentElement, start: 'top top', end: 'bottom bottom', scrub: .25 } });
-  gsap.to('.site-header', { y: -4, boxShadow: '0 14px 42px rgba(55,27,12,.18)', scrollTrigger: { trigger: document.documentElement, start: '120 top', end: '260 top', scrub: .35 } });
-  gsap.to('.hero-copy', { yPercent: -12, opacity: .45, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .7 } });
-  gsap.utils.toArray('.button, .fab').forEach((button) => { button.addEventListener('mouseenter', () => gsap.to(button, { scale: 1.05, duration: .2 })); button.addEventListener('mouseleave', () => gsap.to(button, { scale: 1, duration: .2 })); });
-  ScrollTrigger.refresh();
+window.addEventListener('scroll', () => {
+  if (!progressPending) {
+    progressPending = true;
+    requestAnimationFrame(updateProgress);
+  }
+}, { passive: true });
+window.addEventListener('resize', updateProgress);
+updateProgress();
+
+const hero = root.querySelector('.hero');
+let heroVisible = true;
+function syncVisibility() {
+  hero.classList.toggle('animations-paused', !heroVisible || document.hidden);
+  if (reviewsVisible && !document.hidden) startReviews();
+  else stopReviews();
 }
+if ('IntersectionObserver' in window) {
+  const visibilityObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.target === hero) heroVisible = entry.isIntersecting;
+      if (entry.target === reviewSection) reviewsVisible = entry.isIntersecting;
+    });
+    syncVisibility();
+  });
+  visibilityObserver.observe(hero);
+  visibilityObserver.observe(reviewSection);
+}
+document.addEventListener('visibilitychange', syncVisibility);
