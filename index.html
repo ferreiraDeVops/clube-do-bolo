@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bom bolo bolos caseiros e tortas em Sobradinho, Brasília. Bolos, doces e tortas feitos para adoçar sua rotina e sua festa.">
+  <meta property="og:title" content="Bom bolo | Bolos caseiros e tortas">
+  <meta property="og:description" content="Simplificando sua festa, elevado o sabor.">
+  <meta property="og:image" content="LogoBomBolo.png">
+  <title>Bom bolo | Bolos caseiros e tortas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260906-8">
+  <style>
+    :root { --caramel: #fe8301; }
+    .hero .eyebrow, .hero h1 em, .intro h2 em, .split-copy h2 em, .visit h2 em, .quote-section .section-kicker { color: #fe8301; }
+    .visit { background: #fe8301; }
+    .quote-dots button.active { background: #fe8301; }
+    .site-header { background: #fe8301; border-color: rgba(77, 36, 20, 0.16); }
+    .site-header { top: 28px; }
+    .brand { display: flex; align-items: center; height: 60px; padding: 6px 16px; background: #fe8301; border-radius: 12px; overflow: hidden; }
+    .brand img { width: 138px; height: 50px; }
+    .desktop-nav a, .mobile-nav a { font-size: 18px; font-weight: 700; transition: color .25s ease, transform .25s ease; }
+    .desktop-nav a:hover, .mobile-nav a:hover { color: #fff8ed; transform: translateY(-1px); }
+    .hero-backdrop { background: none !important; }
+    .hero-backdrop::before, .hero-backdrop::after { content: ''; position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; }
+    .hero-backdrop::before { background-image: linear-gradient(90deg, rgba(31, 14, 7, .84) 10%, rgba(48, 20, 9, .45) 50%, rgba(36, 15, 6, .08)), url('Diversos/BoloFatiaPote1.JPG'); animation: hero-image-one 18s ease-in-out infinite; }
+    .hero-backdrop::after { background-image: linear-gradient(90deg, rgba(31, 14, 7, .84) 10%, rgba(48, 20, 9, .45) 50%, rgba(36, 15, 6, .08)), url('Diversos/BoloFatiaPote2.JPG'); animation: hero-image-two 18s ease-in-out infinite; opacity: 0; }
+    .hero-backdrop-third { position: absolute; inset: 0; background-image: linear-gradient(90deg, rgba(31, 14, 7, .84) 10%, rgba(48, 20, 9, .45) 50%, rgba(36, 15, 6, .08)), url('Diversos/BoloFatiaPote3.JPG'); background-position: center; background-size: cover; background-repeat: no-repeat; animation: hero-image-three 18s ease-in-out infinite; opacity: 0; }
+    @keyframes hero-image-one { 0%, 27% { opacity: 1; } 33%, 94% { opacity: 0; } 100% { opacity: 1; } }
+    @keyframes hero-image-two { 0%, 27% { opacity: 0; } 33%, 60% { opacity: 1; } 66%, 100% { opacity: 0; } }
+    @keyframes hero-image-three { 0%, 60% { opacity: 0; } 66%, 94% { opacity: 1; } 100% { opacity: 0; } }
+    .hero-actions { gap: 14px; }
+    .hero-actions .button { padding-inline: 24px; }
+    .hero-actions .text-link { display: inline-flex; align-items: center; gap: 9px; padding: 12px 16px; border: 1px solid rgba(255, 248, 237, .34); border-radius: 999px; color: #fff8ed; transition: background .25s ease, border-color .25s ease, transform .25s ease; }
+    .hero-actions .text-link:hover { background: rgba(254, 131, 1, .18); border-color: #fe8301; transform: translateY(-2px); }
+    .hero-actions .text-link b { display: none; }
+    .instagram-symbol { display: grid; place-items: center; width: 20px; height: 20px; border: 1px solid currentColor; border-radius: 6px; font-size: 15px; line-height: 1; }
+    .hero .eyebrow { font-size: 14px; letter-spacing: .14em; }
+    .hero .eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 11px 17px 11px 13px; border: 1px solid rgba(254, 131, 1, .55); border-radius: 999px; background: rgba(31, 14, 7, .28); backdrop-filter: blur(8px); color: #fff8ed; font-size: 14px; letter-spacing: .1em; }
+    .eyebrow-dot { width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%; background: #fe8301; box-shadow: 0 0 0 4px rgba(254, 131, 1, .16), 0 0 14px rgba(254, 131, 1, .8); }
+    .hero-foot { justify-content: center; }
+    .hero-scroll { display: inline-flex; align-items: center; gap: 12px; margin-left: 0 !important; padding: 10px 17px; border: 1px solid rgba(254, 131, 1, .72); border-radius: 999px; background: rgba(31, 14, 7, .52); color: #fff8ed; font-size: 16px; font-weight: 700; letter-spacing: .13em; text-shadow: 0 2px 8px rgba(0, 0, 0, .55); animation: scroll-prompt 2.2s ease-in-out infinite; }
+    @keyframes scroll-prompt { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+    .hero h1 { max-width: 700px; text-shadow: 0 12px 35px rgba(0, 0, 0, .22); }
+    .hero h1 span { display: block; margin-bottom: 4px; color: #fe8301; font: 600 clamp(2.4rem, 5vw, 4.4rem)/.96 var(--serif); letter-spacing: -.04em; }
+    .hero h1 strong { display: block; color: #fff8ed; font: 600 clamp(3.6rem, 7vw, 6.9rem)/.96 var(--serif); letter-spacing: -.045em; }
+    .hero-text { max-width: 430px; padding-left: 18px; border-left: 2px solid #fe8301; color: rgba(255, 248, 237, .9); font-size: 17px; letter-spacing: .01em; }
+    .hero-art-card { position: relative; background: #fff8ed; }
+    .hero-art-card span { left: 11px; bottom: 12px; width: calc(100% - 22px); color: #211914; font-size: 21px; font-weight: 600; text-align: center; }
+    .intro-grid { align-items: start; }
+    .confected-showcase { position: relative; overflow: hidden; background: #211914; color: #fff8ed; border-bottom: 0; }
+    .confected-showcase .section-kicker { color: #fe8301; }
+    .confected-showcase .section-heading h2 { color: #fff8ed; }
+    .confected-showcase .section-heading p { color: rgba(255, 248, 237, .62); }
+    .confected-showcase .product-grid { display: flex; gap: 18px; overflow-x: auto; padding: 8px 4px 22px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #fe8301 rgba(255, 248, 237, .12); }
+    .confected-showcase .product-card { flex: 0 0 clamp(240px, 25vw, 330px); height: 420px; margin: 0; scroll-snap-align: start; border: 1px solid rgba(254, 131, 1, .28); background: #33231c; transform: none; box-shadow: 0 18px 38px rgba(0, 0, 0, .22); }
+    .confected-showcase .product-card img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: center; }
+    .confected-showcase .product-card figcaption { color: #fff8ed; font-size: 18px; }
+    .confected-showcase .product-card:hover { border-color: #fe8301; box-shadow: 0 22px 46px rgba(254, 131, 1, .16); }
+    .confected-showcase .product-grid::after { content: 'deslize para explorar  →'; flex: 0 0 auto; align-self: center; color: #fe8301; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; writing-mode: vertical-rl; }
+    .confected-showcase .carousel-arrow { position: absolute; z-index: 2; top: 57%; display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid #fe8301; border-radius: 50%; background: rgba(33, 25, 20, .9); color: #fff8ed; font-size: 25px; cursor: pointer; transition: background .25s ease, color .25s ease, transform .25s ease; }
+    .confected-showcase .carousel-arrow:hover { background: #fe8301; color: #211914; transform: scale(1.08); }
+    .confected-showcase .carousel-arrow-prev { left: 5.5%; }
+    .confected-showcase .carousel-arrow-next { right: 5.5%; }
+    .owner-note { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .owner-note img { width: 300px; max-width: 100%; height: auto; flex-shrink: 0; aspect-ratio: 1; border-radius: 10px; object-fit: cover; border: 3px solid #fe8301; }
+    .owner-note strong, .owner-note small { display: block; }
+    .owner-note strong { color: var(--coffee); font: 600 17px var(--serif); }
+    .owner-note small { margin-top: 4px; color: #806f64; font-size: 11px; letter-spacing: .04em; }
+    .intro-lead { display: flex; flex-direction: column; justify-content: space-between; min-height: 410px; }
+    .intro-proof { display: flex; align-items: center; gap: 16px; max-width: 330px; padding-top: 24px; border-top: 1px solid var(--line); color: #806f64; }
+    .intro-proof strong { color: #fe8301; font: 600 42px/1 var(--serif); }
+    .intro-proof span { font-size: 12px; line-height: 1.5; }
+    .site-header .header-cta { background: #25d366; border-color: #25d366; color: #fff; }
+    .site-header .header-cta:hover { background: #128c7e; border-color: #128c7e; }
+    @media (max-width: 768px) { .site-header { top: 16px; } .brand { height: 52px; padding: 5px 12px; } .brand img { width: 116px; height: 43px; } .mobile-nav a { font-size: 16px; } .hero .eyebrow { font-size: 12px; } .confected-showcase .product-card { flex-basis: 72vw; height: 390px; } }
+    @media (min-width: 600px) and (max-width: 768px) { .desktop-nav { display: flex; } .header-cta { display: inline-flex; } .menu-toggle, .mobile-nav { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="preloader" aria-label="Carregando Bom bolo">
+    <img src="LogoBomBolo.png" alt="Bom bolo">
+    <span>Preparando algo especial</span>
+    <div class="loader-line"><i></i></div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Bom bolo, início"><img src="LogoBomBolo.png" alt="Bom bolo"></a>
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      <a href="#vitrines">Vitrines</a>
+      
+      <a href="#depoimentos">Clientes</a>
+      <a href="#contato">Visite-nos</a>
+    </nav>
+    <a class="button button-small header-cta" href="https://wa.me/5561998826916?text=Ol%C3%A1%2C%20quero%20conhecer%20as%20op%C3%A7%C3%B5es%20da%20Bom%20bolo!" target="_blank" rel="noopener"><span>WhatsApp</span><b>↗</b></a>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+    <nav class="mobile-nav" aria-label="Menu mobile">
+      <a href="#vitrines">Vitrines</a><a href="#depoimentos">Clientes</a><a href="#contato">Visite-nos</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-backdrop"><span class="hero-backdrop-third" aria-hidden="true"></span></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Confeitaria artesanal · Sobradinho, DF</p>
+        <h1><span>Desde 2014</span><strong>criando momentos especiais.</strong></h1>
+        <p class="hero-text">Bolos, tortas e doces para transformar qualquer encontro em uma memória gostosa.</p>
+      </div>
+      <div class="hero-art"><div class="hero-art-card"><img src="BolosConfeitados/BoloConfeitado17.jpg" alt="Bolo confeitado especial da Bom bolo" fetchpriority="high"><span>Feito para celebrar</span></div></div>
+      <div class="hero-foot"><span class="hero-scroll">role para descobrir ↓</span></div>
+    </section>
+
+    <div id="gallery-sections"></div>
+
+<section class="quote-section section-pad" id="depoimentos"><div class="section-kicker">Quem prova, volta</div><div class="quote-wrap"><div class="quote-slide active"><div class="review-stars" role="img" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>Bolos deliciosos e muito bem feitos. Atendimento excelente!</blockquote><p>Mariana Ferreira</p></div>
+<div class="quote-slide"><div class="review-stars" role="img" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>Tudo muito gostoso e fresquinho. Recomendo demais!</blockquote><p>Lucas Almeida</p></div>
+<div class="quote-slide"><div class="review-stars" role="img" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>O bolo estava maravilhoso e fez sucesso com toda a família.</blockquote><p>Juliana Martins</p></div>
+<div class="quote-slide"><div class="review-stars" role="img" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>Ótimo atendimento e produtos de excelente qualidade.</blockquote><p>Rafael Oliveira</p></div>
+<div class="quote-slide"><div class="review-stars" role="img" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>Doces deliciosos e apresentação impecável.</blockquote><p>Camila Rodrigues</p></div>
+<div class="quote-slide"><div class="review-stars" role="img" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>Sempre compro aqui e nunca decepciona. Tudo uma delícia!</blockquote><p>Bruno Carvalho</p></div>
+<div class="quote-slide"><div class="review-stars" role="img" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>Encomenda entregue certinho e o bolo estava maravilhoso.</blockquote><p>Fernanda Souza</p></div>
+<div class="quote-slide"><div class="review-stars" role="img" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>O pudim é simplesmente sensacional. Recomendo!</blockquote><p>Gustavo Ribeiro</p></div>
+<div class="quote-slide"><div class="review-stars" role="img" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>Excelente confeitaria. Produtos saborosos e atendimento muito atencioso.</blockquote><p>Amanda Nogueira</p></div>
+<div class="quote-slide"><div class="review-stars" role="img" aria-label="5 de 5 estrelas">★★★★★</div><blockquote>Já virei cliente! Bolo muito saboroso e com ótima apresentação.</blockquote><p>Ricardo Moreira</p></div></div><div class="quote-dots"><button type="button" class="active" aria-label="Avaliação 1"></button><button type="button" aria-label="Avaliação 2"></button><button type="button" aria-label="Avaliação 3"></button><button type="button" aria-label="Avaliação 4"></button><button type="button" aria-label="Avaliação 5"></button><button type="button" aria-label="Avaliação 6"></button><button type="button" aria-label="Avaliação 7"></button><button type="button" aria-label="Avaliação 8"></button><button type="button" aria-label="Avaliação 9"></button><button type="button" aria-label="Avaliação 10"></button></div></section>
+
+    <section class="intro section-pad" id="vitrines">
+      <div class="intro-grid"><div class="intro-lead"><h2>Desde 2014, guardamos<br>o segredo que faz<br><em>todo mundo voltar.</em></h2><div class="intro-proof"><strong>10+</strong><span>anos transformando receitas artesanais em momentos especiais.</span></div></div><div><p>Na Bom bolo, cada fornada nasce de ingredientes escolhidos e de uma vontade simples: fazer o seu dia ficar mais gostoso.</p><div class="owner-note"><div class="owner-carousel" role="region" aria-roledescription="carrossel" aria-label="Fotos do proprietário"><img src="Proprietario/Proprietario.jpg" alt="Proprietário da Bom bolo"><img src="Proprietario/TaçaRayner.JPG" alt="Proprietário com taças de sobremesa da Bom bolo" hidden><div class="owner-controls"><button type="button" class="owner-prev" aria-label="Foto anterior">←</button><button type="button" class="owner-next" aria-label="Próxima foto">→</button></div></div><div><strong>Por trás de cada receita</strong><small>Dedicação, cuidado e sabor.</small></div></div><a class="text-link dark" href="#contato">Faça sua encomenda <b>↗</b></a></div></div>
+      <div class="category-pills" id="category-pills"></div>
+    </section>
+
+    <section class="store-visit" id="contato" aria-labelledby="visit-title">
+      <div class="store-invitation">
+        <div class="store-copy">
+          <div class="section-kicker">Tem um lugar para você aqui</div>
+          <h2 id="visit-title">Pela foto dá vontade.<br><em>De perto, dá água na boca.</em></h2>
+          <p>Passe na Bom bolo, conheça nossos bolos e doces de pertinho e escolha seu próximo bolo favorito. Para adoçar a tarde ou levar um presente especial para quem você ama, vai ser um prazer receber você!</p>
+          <a class="button store-directions" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bom%20bolo%20bolos%20caseiro%20e%20tortas%2C%20Q%205%20CL%203%20Loja%203%2C%20Sobradinho%2C%20Brasilia%20DF" target="_blank" rel="noopener">Como chegar à loja <b aria-hidden="true">↗</b></a>
+          <span class="store-location">Esperamos você em Sobradinho, Brasília.</span>
+        </div>
+        <figure class="store-photo">
+          <img src="FatiasBolo/BoloNinho.JPG" alt="Bolo de Ninho com cobertura de leite em pó" loading="lazy" width="2000" height="2500">
+          <figcaption>Venha escolher seu bolo de perto.</figcaption>
+        </figure>
+      </div>
+      <div class="store-details">
+        <div class="store-info">
+          <div><h3>Venha nos conhecer</h3><address>Q 5, CL 3, loja 3 · Sobradinho<br>Brasília – DF · CEP 73031-510</address></div>
+          <div><h3>Escolha a hora de passar</h3><dl class="store-hours"><div><dt>Segunda a sábado</dt><dd>7h30 às 19h30</dd></div><div><dt>Domingo</dt><dd>8h às 18h</dd></div></dl></div>
+          <a class="store-contact" href="https://wa.me/5561998826916" target="_blank" rel="noopener">Fale com a gente no WhatsApp <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="store-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3841.9540581339133!2d-47.80767062563213!3d-15.647434719351994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a4195fd40368f%3A0xa8e9dd491a8fb2c2!2sBom%20bolo%20bolos%20caseiro%20e%20tortas!5e0!3m2!1spt-BR!2sbr!4v1788659176023!5m2!1spt-BR!2sbr" title="Mapa da Bom bolo" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer"><img src="LogoBomBolo.png" alt="Bom bolo"><div><p>Simplificando sua festa,<br><em>elevado o sabor.</em></p><a href="https://www.instagram.com/clubedobolo_oficial/" target="_blank" rel="noopener">Instagram ↗</a></div><div class="footer-meta"><span>61 99882-6916</span><span>Sobradinho · Brasília</span><a href="https://dz7-marketing-site.vercel.app/" target="_blank" rel="noopener">Desenvolvido por Dz7 Marketing</a></div></footer>
+  <div class="floating-actions"><a class="fab whatsapp" href="https://wa.me/5561998826916?text=Ol%C3%A1%2C%20Bom%20bolo!" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">◔</a><a class="fab instagram" href="https://www.instagram.com/clubedobolo_oficial/" target="_blank" rel="noopener" aria-label="Abrir Instagram">◎</a></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script><script src="script.js?v=20260906-9"></script>
+</body>
+</html>
