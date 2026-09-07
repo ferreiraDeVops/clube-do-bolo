@@ -1,11 +1,39 @@
 const root = document;
 
+const whatsappCallout = root.querySelector('.whatsapp-callout');
+if (whatsappCallout) {
+  const storeClock = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Sao_Paulo', weekday: 'short',
+    hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+  });
+  function updateWhatsappCallout() {
+    const parts = Object.fromEntries(storeClock.formatToParts(new Date()).map(({ type, value }) => [type, value]));
+    const minutes = Number(parts.hour) * 60 + Number(parts.minute);
+    const sunday = parts.weekday === 'Sun';
+    // Published hours: Mon–Sat 07:30–19:30; Sunday 08:00–18:00.
+    const isOpen = minutes >= (sunday ? 480 : 450) && minutes < (sunday ? 1080 : 1170);
+    const message = isOpen ? 'Faça seu pedido pelo WhatsApp.' : 'Faça sua encomenda pelo WhatsApp.';
+    whatsappCallout.querySelector('strong').textContent = isOpen ? 'Estamos online!' : 'Encomende por aqui!';
+    whatsappCallout.querySelector('small').textContent = message;
+    whatsappCallout.classList.toggle('is-closed', !isOpen);
+    whatsappCallout.closest('a').setAttribute('aria-label', message);
+  }
+  updateWhatsappCallout();
+  setInterval(updateWhatsappCallout, 15000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) updateWhatsappCallout();
+  });
+}
+
 const ownerCarousel = root.querySelector('.owner-carousel');
 if (ownerCarousel) {
   const photos = ownerCarousel.querySelectorAll('img');
   let photoIndex = 0;
   const changePhoto = (step) => {
-    photoIndex = (photoIndex + step + photos.length) % photos.length;
+    photoIndex = Math.max(0, Math.min(photos.length - 1, photoIndex + step));
+    const next = ownerCarousel.querySelector('.owner-next');
+    next.disabled = photoIndex >= photos.length - 1;
+    next.classList.toggle('is-at-end', next.disabled);
     photos.forEach((photo, index) => { photo.hidden = index !== photoIndex; });
   };
   ownerCarousel.querySelector('.owner-prev').addEventListener('click', () => changePhoto(-1));
@@ -43,8 +71,8 @@ categories.forEach((category, categoryIndex) => {
   category.files.forEach((file, index) => {
     const figure = document.createElement('figure');
     figure.className = 'product-card';
-    const caption = isShowcase ? 'Bom bolo' : category.title;
-    figure.innerHTML = `<img src="optimized/${category.folder}/${file}" alt="${category.title} Bom bolo ${index + 1}" loading="lazy" decoding="async"><figcaption>${caption}</figcaption>`;
+    const caption = isShowcase ? 'clube do bolo' : category.title;
+    figure.innerHTML = `<img src="optimized/${category.folder}/${file}" alt="${category.title} clube do bolo ${index + 1}" loading="lazy" decoding="async"><figcaption>${caption}</figcaption>`;
     grid.appendChild(figure);
   });
   gallery.appendChild(section);
@@ -54,16 +82,52 @@ categories.forEach((category, categoryIndex) => {
     const scrollAmount = () => section.querySelector('.product-card').getBoundingClientRect().width + 18;
     previous.addEventListener('click', () => section.querySelector('.product-grid').scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
     next.addEventListener('click', () => section.querySelector('.product-grid').scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
+    const updateNextArrow = () => {
+      const atEnd = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 2;
+      next.disabled = atEnd;
+      next.classList.toggle('is-at-end', atEnd);
+    };
+    let arrowFramePending = false;
+    const scheduleArrowUpdate = () => {
+      if (arrowFramePending) return;
+      arrowFramePending = true;
+      requestAnimationFrame(() => {
+        updateNextArrow();
+        arrowFramePending = false;
+      });
+    };
+    grid.addEventListener('scroll', scheduleArrowUpdate, { passive: true });
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(scheduleArrowUpdate);
+      resizeObserver.observe(grid);
+      resizeObserver.observe(grid.querySelector('.product-card'));
+    } else {
+      window.addEventListener('resize', scheduleArrowUpdate);
+    }
+    scheduleArrowUpdate();
   }
 });
 
 const menuButton = root.querySelector('.menu-toggle');
 const mobileNav = root.querySelector('.mobile-nav');
-menuButton.addEventListener('click', () => {
-  const open = mobileNav.classList.toggle('open');
+function setMenuOpen(open) {
+  mobileNav.classList.toggle('open', open);
+  mobileNav.inert = !open;
   menuButton.setAttribute('aria-expanded', String(open));
+  menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+}
+menuButton.addEventListener('click', () => setMenuOpen(!mobileNav.classList.contains('open')));
+root.querySelectorAll('.mobile-nav a').forEach((link) => link.addEventListener('click', () => setMenuOpen(false)));
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && mobileNav.classList.contains('open')) {
+    setMenuOpen(false);
+    menuButton.focus();
+  }
 });
-root.querySelectorAll('.mobile-nav a').forEach((link) => link.addEventListener('click', () => mobileNav.classList.remove('open')));
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.site-header')) setMenuOpen(false);
+});
+window.matchMedia('(max-width: 1100px)').addEventListener('change', () => setMenuOpen(false));
 
 const reviewSection = root.querySelector('#depoimentos');
 const reviewButtons = root.querySelectorAll('.quote-dots button');
@@ -125,6 +189,40 @@ window.addEventListener('resize', updateProgress);
 updateProgress();
 
 const hero = root.querySelector('.hero');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let backgroundsLoading = false;
+async function prepareHeroBackgrounds() {
+  if (backgroundsLoading || reducedMotion.matches) return;
+  backgroundsLoading = true;
+  try {
+    // Decode one optimized image at a time without blocking the initial render.
+    for (const number of [1, 2, 3]) {
+      const photo = new Image();
+      photo.decoding = 'async';
+      photo.fetchPriority = 'low';
+      await new Promise((resolve, reject) => {
+        photo.onload = resolve;
+        photo.onerror = reject;
+        photo.src = `optimized/Diversos/BoloFatiaPote${number}.JPG`;
+      });
+      if (photo.decode) await photo.decode();
+    }
+    hero.classList.add('backgrounds-ready');
+  } catch {
+    // Keep the first background visible if a later image cannot load.
+    backgroundsLoading = false;
+  }
+}
+function scheduleHeroBackgrounds() {
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(prepareHeroBackgrounds, { timeout: 1500 });
+  } else {
+    setTimeout(prepareHeroBackgrounds, 250);
+  }
+}
+if (document.readyState === 'complete') scheduleHeroBackgrounds();
+else window.addEventListener('load', scheduleHeroBackgrounds, { once: true });
+reducedMotion.addEventListener('change', scheduleHeroBackgrounds);
 let heroVisible = true;
 function syncVisibility() {
   hero.classList.toggle('animations-paused', !heroVisible || document.hidden);
