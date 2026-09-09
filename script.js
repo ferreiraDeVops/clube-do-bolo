@@ -9,14 +9,30 @@ function applyImageAsset(image, source, sizes) {
   image.srcset = asset.smallWidth < asset.width ? `${asset.small} ${asset.smallWidth}w, ${asset.src} ${asset.width}w` : `${asset.src} ${asset.width}w`;
   image.src = asset.src;
 }
+const productImageSizes = '(max-width: 768px) 86vw, (max-width: 1320px) 25vw, 330px';
+function preloadProductImages(grid) {
+  const cards = Array.from(grid.children);
+  const firstOffset = cards[0]?.offsetLeft ?? 0;
+  const start = grid.scrollLeft - grid.clientWidth;
+  const end = grid.scrollLeft + grid.clientWidth * 4;
+  cards.forEach((card) => {
+    const left = card.offsetLeft - firstOffset;
+    const photo = card.querySelector('img[data-source]');
+    if (!photo || left + card.offsetWidth < start || left > end) return;
+    // The section observer already defers loading; native lazy loading would
+    // delay these offscreen neighbors again until the swipe has started.
+    photo.loading = 'eager';
+    applyImageAsset(photo, photo.dataset.source, productImageSizes);
+    delete photo.dataset.source;
+  });
+}
 const productImageObserver = 'IntersectionObserver' in window ? new IntersectionObserver((entries, observer) => {
   entries.forEach(({ target, isIntersecting }) => {
     if (!isIntersecting) return;
-    applyImageAsset(target, target.dataset.source, '(max-width: 768px) 86vw, (max-width: 1320px) 25vw, 330px');
-    delete target.dataset.source;
+    preloadProductImages(target);
     observer.unobserve(target);
   });
-}, { rootMargin: '400px' }) : null;
+}, { rootMargin: '900px 0px' }) : null;
 
 const whatsappCallout = root.querySelector('.whatsapp-callout');
 if (whatsappCallout) {
@@ -98,11 +114,11 @@ categories.forEach((category, categoryIndex) => {
     const photo = figure.querySelector('img');
     if (productImageObserver) {
       photo.dataset.source = source;
-      productImageObserver.observe(photo);
-    } else applyImageAsset(photo, source, '(max-width: 768px) 86vw, 330px');
+    } else applyImageAsset(photo, source, productImageSizes);
     grid.appendChild(figure);
   });
   gallery.appendChild(section);
+  productImageObserver?.observe(grid);
   if (isShowcase) {
     const dots = section.querySelector('.carousel-dots');
     let positions = [];
@@ -175,6 +191,7 @@ categories.forEach((category, categoryIndex) => {
       if (dotFramePending) return;
       dotFramePending = true;
       requestAnimationFrame(() => {
+        preloadProductImages(grid);
         updateActiveDot();
         dotFramePending = false;
       });
