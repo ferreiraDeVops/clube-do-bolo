@@ -41,16 +41,17 @@ if (ownerCarousel) {
 }
 
 const categories = [
-  { id: 'bolo-no-pote', title: 'Bolo no pote', folder: 'BoloNoPote', prefix: 'BoloNoPote', files: ['BoloNoPote1.JPG', 'BoloNoPote2.JPG', 'BoloNoPote3.JPG', 'BoloNoPote4.jpg', 'BoloNoPote5.JPG'], description: 'Camadas de carinho para levar com você.' },
+  { id: 'bolos-personalizados', title: 'Bolos Personalizados', folder: 'BoloPersonalizado', basePath: '', files: ['BoloPersonalizado20.jpeg', 'BoloPersonalizado1.jpeg', 'BoloPersonalizado3.jpeg', 'BoloPersonalizado4.jpeg', 'BoloPersonalizado5.jpeg', 'BoloPersonalizado6.jpeg', 'BoloPersonalizado7.jpeg', 'BoloPersonalizado8.jpeg', 'BoloPersonalizado9.jpeg', 'BoloPersonalizado10.jpeg', 'BoloPersonalizado11.jpeg', 'BoloPersonalizado12.jpeg', 'BoloPersonalizado13.jpeg', 'BoloPersonalizado14.jpeg', 'BoloPersonalizado15.jpeg', 'BoloPersonalizado16.jpeg', 'BoloPersonalizado17.jpeg', 'BoloPersonalizado18.jpeg', 'BoloPersonalizado19.jpeg'], description: 'Do seu jeito, para tornar cada celebração única.' },
+  { id: 'bolo-no-pote', title: 'Mini bolos', folder: 'BoloNoPote', prefix: 'BoloNoPote', files: ['BoloNoPote1.JPG', 'BoloNoPote2.JPG', 'BoloNoPote3.JPG', 'BoloNoPote4.jpg', 'BoloNoPote5.JPG'], description: 'Camadas de carinho para levar com você.' },
   { id: 'bolos-caseiros', title: 'Bolos caseiros', folder: 'BolosCaseiros', prefix: 'BoloCaseiro', files: ['BoloCaseiro1.JPG', 'BoloCaseiro2.JPG', 'BoloCaseiro3.JPG', 'BoloCaseiro4.JPG', 'BoloCaseiro5.JPG', 'BoloCaseiro6.JPG', 'BoloCaseiro7.JPG', 'BoloCaseiro8.JPG', 'BoloCaseiro9.JPG', 'BoloCaseiro10.JPG', 'BoloCaseiro11.JPG', 'BoloCaseiro12.JPG', 'BoloCaseiro13.JPG', 'BoloCaseiro14.JPG', 'BoloCaseiro15.JPG'], description: 'Receitas que perfumam a casa inteira.' },
-  { id: 'bolos-confeitados', title: 'Bolos confeitados', folder: 'BolosConfeitados', prefix: 'BoloConfeitado', files: ['BoloConfeitado1.JPG', 'BoloConfeitado2.JPG', 'BoloConfeitado3.JPG', 'BoloConfeitado4.JPG', 'BoloConfeitado5.JPG', 'BoloConfeitado6.JPG', 'BoloConfeitado7.JPG', 'BoloConfeitado8.JPG', 'BoloConfeitado9.JPG', 'BoloConfeitado10.jpg', 'BoloConfeitado11.jpg', 'BoloConfeitado12.jpg', 'BoloConfeitado13.jpg', 'BoloConfeitado14.JPG', 'BoloConfeitado15.JPG', 'BoloConfeitado16.jpg', 'BoloConfeitado17.jpg'], description: 'Para celebrar em grande estilo.' },
+  { id: 'bolos-confeitados', title: 'Bolos confeitados', folder: 'BolosConfeitados', basePath: '', prefix: 'BoloConfeitado', files: ['BoloConfeitado1.png', 'BoloConfeitado2.JPG', 'BoloConfeitado3.png', 'BoloConfeitado5.png', 'BoloConfeitado9.png', 'BoloConfeitado10.png', 'BoloConfeitado11.png', 'BoloConfeitado12.png', 'BoloConfeitado13.png', 'BoloConfeitado14.png', 'BoloConfeitado15.png', 'BoloConfeitado16.jpg', 'BoloConfeitado7.JPG', 'BoloConfeitado17.png', 'BoloConfeitado6.JPG', 'BoloConfeitado8.JPG', 'BoloConfeitado1.1.jpeg', 'BoloConfeitado2.2.jpeg', 'BoloConfeitado3.3.jpeg', 'BoloConfeitado4.4.jpeg', 'BoloConfeitado5.5.jpeg', 'BoloConfeitado6.6.jpeg'], description: 'Para celebrar em grande estilo.' },
   { id: 'fatias', title: 'Fatias de bolo', folder: 'FatiasBolo', files: ['FatiaBolo1.JPG', 'FatiaBolo2.JPG', 'FatiaBolo3.JPG', 'FatiaBolo4.JPG', 'FatiaBolo6.JPG', 'FatiaBolo7.jpg'], description: 'Uma pausa doce no meio do dia.' },
-  { id: 'lanche', title: 'Lanche da tarde', folder: 'LancheTarde', files: ['LancheTarde1.JPG', 'LancheTarde2.JPG', 'LancheTarde3.JPG', 'LancheTarde4.JPG', 'LancheTarde5.JPG'], description: 'Café passado e mesa cheia.' },
-  { id: 'doces', title: 'Doces', folder: 'Doces', files: ['Doce1.JPG', 'Doce2.JPG', 'Doce3.JPG', 'Doce4.JPG', 'Doce5.JPG', 'Doce6.JPG', 'Doce7.JPG', 'Doce8.JPG', 'Doce9.jpg', 'Doce10.jpg', 'Doce11.jpg', 'Doce12.jpg', 'Doce13.JPG', 'Doce14.JPG', 'Doce15.jpg', 'Doce16.JPG'], description: 'Pequenos detalhes, grandes suspiros.' },
+  { id: 'lanche', title: 'Lanche da tarde', folder: 'LancheTarde', originalFiles: ['MilhoCremosoNaPalha.jpeg'], files: ['LancheTarde1.JPG', 'LancheTarde2.JPG', 'LancheTarde3.JPG', 'LancheTarde4.JPG', 'LancheTarde5.JPG', 'MilhoCremosoNaPalha.jpeg'], description: 'Café passado e mesa cheia.' },
+  { id: 'doces', title: 'Doces', folder: 'Doces', originalFiles: ['DocesBandeja1.jpeg', 'DocesBandeija2.jpeg', 'DocesBandeija3.jpeg', 'DocesBandeija4.jpeg', 'DocesBandeija5.jpeg', 'DocesBandeija6.jpeg'], files: ['DocesBandeja1.jpeg', 'DocesBandeija2.jpeg', 'DocesBandeija3.jpeg', 'DocesBandeija4.jpeg', 'DocesBandeija5.jpeg', 'DocesBandeija6.jpeg', 'Doce1.JPG', 'Doce2.JPG', 'Doce3.JPG', 'Doce4.JPG', 'Doce5.JPG', 'Doce6.JPG', 'Doce7.JPG', 'Doce8.JPG', 'Doce9.jpg', 'Doce10.jpg', 'Doce11.jpg', 'Doce12.jpg', 'Doce13.JPG', 'Doce14.JPG', 'Doce15.jpg', 'Doce16.JPG'], description: 'Pequenos detalhes, grandes suspiros.' },
   { id: 'tacas', title: 'Taças', folder: 'Taças', files: ['Taca1.JPG', 'Taça1.JPG', 'Taça2.JPG', 'Taça3.JPG', 'Taça4.JPG', 'Taça5.JPG', 'Taça6.JPG', 'Taça7.JPG'], description: 'Sobremesas para comer com os olhos.' },
 ];
 
-const categoryOrder = ['bolos-confeitados', 'bolos-caseiros', 'fatias', 'doces', 'tacas', 'bolo-no-pote', 'lanche'];
+const categoryOrder = ['bolos-personalizados', 'bolos-confeitados', 'bolos-caseiros', 'fatias', 'doces', 'tacas', 'bolo-no-pote', 'lanche'];
 categories.sort((first, second) => categoryOrder.indexOf(first.id) - categoryOrder.indexOf(second.id));
 
 const pills = root.querySelector('#category-pills');
@@ -62,7 +63,7 @@ categories.forEach((category, categoryIndex) => {
   pills.appendChild(pill);
   const section = document.createElement('section');
   section.className = 'display-section';
-  const isShowcase = ['bolos-confeitados', 'bolos-caseiros', 'fatias', 'doces', 'tacas', 'bolo-no-pote', 'lanche'].includes(category.id);
+  const isShowcase = categoryOrder.includes(category.id);
   if (isShowcase) section.classList.add('confected-showcase');
   section.id = category.id;
   const kicker = isShowcase ? '' : `<div class="section-kicker">${String(categoryIndex + 1).padStart(2, '0')} / vitrine</div>`;
@@ -72,7 +73,7 @@ categories.forEach((category, categoryIndex) => {
     const figure = document.createElement('figure');
     figure.className = 'product-card';
     const caption = isShowcase ? 'clube do bolo' : category.title;
-    figure.innerHTML = `<img src="optimized/${category.folder}/${file}" alt="${category.title} clube do bolo ${index + 1}" loading="lazy" decoding="async"><figcaption>${caption}</figcaption>`;
+    figure.innerHTML = `<img src="${category.originalFiles?.includes(file) ? '' : (category.basePath ?? 'optimized/')}${category.folder}/${file}" alt="${category.title} clube do bolo ${index + 1}" loading="lazy" decoding="async"><figcaption>${caption}</figcaption>`;
     grid.appendChild(figure);
   });
   gallery.appendChild(section);
@@ -190,6 +191,36 @@ updateProgress();
 
 const hero = root.querySelector('.hero');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const heroCardImage = root.querySelector('.hero-art-card img');
+const heroCardSlides = [
+  { src: 'BoloPersonalizado/BoloPersonalizado20.jpeg', alt: 'Bolo personalizado do Flamengo' },
+  { src: 'BolosConfeitados/BoloConfeitado17.png', alt: 'Bolo confeitado do clube do bolo' },
+  { src: 'optimized/BolosCaseiros/BoloCaseiro1.JPG', alt: 'Bolo caseiro do clube do bolo' },
+  { src: 'optimized/FatiasBolo/FatiaBolo3.JPG', alt: 'Fatia de bolo do clube do bolo' },
+  { src: 'optimized/Doces/Doce8.JPG', alt: 'Doces do clube do bolo' },
+];
+let heroCardIndex = 0;
+let heroCardLoading = false;
+if (heroCardImage) {
+  setInterval(async () => {
+    if (heroCardLoading || document.hidden || reducedMotion.matches || !heroCardImage.getClientRects().length) return;
+    heroCardLoading = true;
+    const nextIndex = (heroCardIndex + 1) % heroCardSlides.length;
+    const slide = heroCardSlides[nextIndex];
+    try {
+      const nextImage = new Image();
+      nextImage.src = slide.src;
+      await nextImage.decode();
+      heroCardImage.src = slide.src;
+      heroCardImage.alt = slide.alt;
+      heroCardIndex = nextIndex;
+    } catch {
+      // Preserve the current photo if the next image cannot load.
+    } finally {
+      heroCardLoading = false;
+    }
+  }, 2000);
+}
 let backgroundsLoading = false;
 async function prepareHeroBackgrounds() {
   if (backgroundsLoading || reducedMotion.matches) return;
