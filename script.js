@@ -66,10 +66,10 @@ const categories = [
   { id: 'fatias', title: 'Fatias de bolo', folder: 'FatiasBolo', files: ['FatiaBolo1.JPG', 'FatiaBolo2.JPG', 'FatiaBolo3.JPG', 'FatiaBolo4.JPG', 'FatiaBolo6.JPG', 'FatiaBolo7.jpg'], description: 'Uma pausa doce no meio do dia.' },
   { id: 'lanche', title: 'Lanche da tarde', folder: 'LancheTarde', originalFiles: ['MilhoCremosoNaPalha.jpeg'], files: ['LancheTarde1.JPG', 'LancheTarde2.JPG', 'LancheTarde3.JPG', 'LancheTarde4.JPG', 'LancheTarde5.JPG', 'MilhoCremosoNaPalha.jpeg'], description: 'Café passado e mesa cheia.' },
   { id: 'doces', title: 'Doces', folder: 'Doces', originalFiles: ['DocesBandeja1.jpeg', 'DocesBandeija2.jpeg', 'DocesBandeija3.jpeg', 'DocesBandeija4.jpeg', 'DocesBandeija5.jpeg', 'DocesBandeija6.jpeg'], files: ['DocesBandeja1.jpeg', 'DocesBandeija2.jpeg', 'DocesBandeija3.jpeg', 'DocesBandeija4.jpeg', 'DocesBandeija5.jpeg', 'DocesBandeija6.jpeg', 'Doce1.JPG', 'Doce2.JPG', 'Doce3.JPG', 'Doce4.JPG', 'Doce5.JPG', 'Doce6.JPG', 'Doce7.JPG', 'Doce8.JPG', 'Doce9.jpg', 'Doce10.jpg', 'Doce11.jpg', 'Doce12.jpg', 'Doce13.JPG', 'Doce14.JPG', 'Doce15.jpg', 'Doce16.JPG'], description: 'Pequenos detalhes, grandes suspiros.' },
-  { id: 'tacas', title: 'Taças', folder: 'Taças', files: ['Taca1.JPG', 'Taça1.JPG', 'Taça2.JPG', 'Taça3.JPG', 'Taça4.JPG', 'Taça5.JPG', 'Taça6.JPG', 'Taça7.JPG'], description: 'Sobremesas para comer com os olhos.' },
+  { id: 'sobremesas', title: 'Sobremesas', folder: 'Sobremesas', basePath: '', files: ['Taça1.JPG', 'Taça2.JPG', 'Taça6.JPG', 'SobremesChessCakeMirtilo.jpeg', 'SobremesaMorangoffe.jpeg', 'Sobremesa.jpeg', 'Doce15.jpg', 'SobremesaTarteleteMorango.jpeg', 'Doce16.JPG', 'SobremesaMorango.jpeg', 'Doce13.JPG', 'Doce14.JPG', 'SobremesaPudin1.jpeg', 'SobremesaTravessaDeUva.jpeg', 'SobremesaBoloNoCopo.png', 'SobremesaBoloNoPote.jpeg', 'SobremesaBomBomDeMorango.jpeg'], description: 'Sobremesas para comer com os olhos.' },
 ];
 
-const categoryOrder = ['bolos-personalizados', 'bolos-confeitados', 'bolos-caseiros', 'fatias', 'doces', 'tacas', 'bolo-no-pote', 'lanche'];
+const categoryOrder = ['bolos-personalizados', 'bolos-confeitados', 'bolos-caseiros', 'fatias', 'doces', 'sobremesas', 'bolo-no-pote', 'lanche'];
 categories.sort((first, second) => categoryOrder.indexOf(first.id) - categoryOrder.indexOf(second.id));
 
 const gallery = root.querySelector('#gallery-sections');
