@@ -1,0 +1,5 @@
+2026/09/09-16:28:19.406 2820 Creating DB C:\Users\sujei\OneDrive\Desktop\ClubeDoBolo\tools\.browser-audit-2\Default\EdgeCoupons/coupons_data.db since it was missing.
+2026/09/09-16:28:20.634 2820 Reusing MANIFEST C:\Users\sujei\OneDrive\Desktop\ClubeDoBolo\tools\.browser-audit-2\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/09/09-16:28:22.754 3a48 Level-0 table #5: started
+2026/09/09-16:28:22.778 3a48 Level-0 table #5: 683273 bytes OK
+2026/09/09-16:28:22.784 3a48 Delete type=0 #3

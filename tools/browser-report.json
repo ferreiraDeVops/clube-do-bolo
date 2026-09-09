@@ -1,0 +1,32 @@
+[
+  {
+    "width": 390,
+    "overflow": false,
+    "sections": 8,
+    "loadedProducts": 1,
+    "totalProducts": 103,
+    "imageBytes": 265477,
+    "broken": [],
+    "clickScroll": 353,
+    "keyboardEnd": true,
+    "reviewClick": true,
+    "reviewKeyboard": true,
+    "details": true,
+    "missingAssets": []
+  },
+  {
+    "width": 1440,
+    "overflow": false,
+    "sections": 8,
+    "loadedProducts": 4,
+    "totalProducts": 103,
+    "imageBytes": 1306437,
+    "broken": [],
+    "clickScroll": 352,
+    "keyboardEnd": true,
+    "reviewClick": true,
+    "reviewKeyboard": true,
+    "details": true,
+    "missingAssets": []
+  }
+]
