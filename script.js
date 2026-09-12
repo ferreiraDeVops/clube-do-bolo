@@ -102,8 +102,7 @@ categories.forEach((category, categoryIndex) => {
   const isShowcase = categoryOrder.includes(category.id);
   if (isShowcase) section.classList.add('confected-showcase');
   section.id = category.id;
-  const kicker = isShowcase ? '' : `<div class="section-kicker">${String(categoryIndex + 1).padStart(2, '0')} / vitrine</div>`;
-  section.innerHTML = `<div class="section-heading"><div>${kicker}<h2>${category.title}</h2></div><p>${category.description}</p></div><div class="product-grid" id="${category.id}-images"></div>${isShowcase ? '<div class="carousel-dots" role="group" aria-label="Navegação de imagens"></div>' : ''}`;
+  section.innerHTML = `<header class="section-heading section-title"><h2 class="section-kicker">${category.title}</h2><h3>${category.description}</h3></header><div class="product-grid" id="${category.id}-images"></div>${isShowcase ? '<div class="carousel-dots" role="group" aria-label="Navegação de imagens"></div>' : ''}`;
   const grid = section.querySelector('.product-grid');
   category.files.forEach((file, index) => {
     const figure = document.createElement('figure');
@@ -228,6 +227,9 @@ function setMenuOpen(open) {
   menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
 }
 menuButton.addEventListener('click', () => setMenuOpen(!mobileNav.classList.contains('open')));
+window.addEventListener('scroll', () => {
+  if (mobileNav.classList.contains('open')) setMenuOpen(false);
+}, { passive: true });
 root.querySelectorAll('.mobile-nav a').forEach((link) => link.addEventListener('click', () => setMenuOpen(false)));
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && mobileNav.classList.contains('open')) {
